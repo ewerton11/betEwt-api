@@ -46,6 +46,6 @@ public class BetsControllers : ControllerBase
         _context.Bets.Add(betsModels);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetBetsModels) ,new { id = betsModels.id }, betsModels);
+        return CreatedAtAction(nameof(GetBetsModels) ,new { id = betsModels.Id }, betsModels);
     }
 }
