@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = "server=localhost; port=3306; database=betEwt; user=root; password=root;";
-var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 32));
 
 builder.Services.AddDbContext<MyDbContext>(
             dbContextOptions => dbContextOptions

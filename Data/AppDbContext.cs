@@ -1,3 +1,4 @@
+using UserApi.Models;
 using BetsApi.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,19 +9,6 @@ public class MyDbContext : DbContext
     {
     }
 
+    public DbSet<UserModels> Users { get; set; } = null!;
     public DbSet<BetsModels> Bets { get; set; } = null!;
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    { 
-        modelBuilder.Entity<BetsModels>(entity =>
-        {
-            entity.HasKey(e => e.id);
-            entity.Property(e => e.id).HasColumnName("id");
-            entity.Property(e => e.title).HasColumnName("title");
-            entity.Property(e => e.price).HasColumnName("price");
-            entity.Property(e => e.description).HasColumnName("description");
-            entity.Property(e => e.created_at).HasColumnName("created_at");
-            entity.ToTable("bets");
-        });
-    }
 }
