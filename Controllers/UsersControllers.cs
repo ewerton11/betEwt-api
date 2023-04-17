@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using MyDbContextApi.Data;
 using UserApi.Models;
 using UserApi.Service;
-using Microsoft.EntityFrameworkCore;
 
 namespace UsersApi.Controllers;
 

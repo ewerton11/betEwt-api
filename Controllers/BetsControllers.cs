@@ -19,7 +19,9 @@ public class BetsControllers : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<BetsModels>>> GetBetsModels()
     {
-        return await _context.Bets.ToListAsync();
+        var test = await _context.Bets.ToListAsync();
+        Console.WriteLine(test);
+        return test;
     }
 
     [HttpGet("{id}")]

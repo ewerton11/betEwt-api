@@ -1,5 +1,8 @@
 using MyDbContextApi.Data;
 using Microsoft.EntityFrameworkCore;
+using UserApi.Service;
+using Microsoft.AspNetCore.Identity;
+using UserApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,9 @@ var serverVersion = new MySqlServerVersion(new Version(8, 0, 32));
 builder.Services.AddDbContext<MyDbContext>(
             dbContextOptions => dbContextOptions
                 .UseMySql(connectionString, serverVersion));
+
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<IPasswordHasher<UserModels>, PasswordHasher<UserModels>>();
 
 var app = builder.Build();
 
