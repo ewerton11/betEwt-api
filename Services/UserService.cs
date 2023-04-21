@@ -21,18 +21,18 @@ public class UserService
         return await _context.Users.FirstOrDefaultAsync(u => u.User == user);
     }
 
-    public async Task CreateUserAsync(UserModels userModels, string password)
+    public async Task CreateUserAsync(UserModels userModels)
     {
-        var hashedPassword = _passwordHasher.HashPassword(userModels, password);
+        var hashedPassword = _passwordHasher.HashPassword(userModels, userModels.Password);
 
         userModels.PasswordHash = hashedPassword;
         _context.Users.Add(userModels);
         await _context.SaveChangesAsync();
     }
 
-    public bool VerifyPasswordAsync(UserModels userModels, string password)
+    public bool VerifyPasswordAsync(UserModels userModels)
     {
-        var result = _passwordHasher.VerifyHashedPassword(userModels, userModels.PasswordHash, password);
+        var result = _passwordHasher.VerifyHashedPassword(userModels, userModels.PasswordHash, userModels.Password);
         return result == PasswordVerificationResult.Success;
     }
 }
